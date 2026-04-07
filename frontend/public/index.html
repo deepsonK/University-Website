@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- BUG: Invalid viewport meta tag -->
+    <meta name="viewport" content="width=device-width">
+    <!-- BUG: Missing title -->
+    <title></title>
+    <!-- BUG: Stylesheet not properly linked -->
+    <link rel="stylesheet" href="styles.css" >
+  </head>
+  <body>
+    <!-- BUG: No fallback for JavaScript disabled -->
+    <div id="root"></div>
+    <!-- BUG: Script src is incorrect -->
+    <script src="./index.js" type"text/javascript" ></script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+/* BUG: Home page styles missing */
+.home-page {
+  /* BUG: No padding or margin */
+}
+
+.hero {
+  background-color: #f0f0f0;
+  padding: 4rem 2rem;
+  text-align: center;
+  /* BUG: No background image fallback */
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin: 0;
+  /* BUG: No responsive font size */
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #666;
+  /* BUG: Missing margin */
+}
+
+/* BUG: CTA button not styled */
+.btn-primary {
+  /* Already defined elsewhere but not properly */
+}
+
+.announcements {
+  padding: 2rem;
+  /* BUG: No container max-width */
+}
+
+.announcement-list {
+  display: grid;
+  /* BUG: No grid-template-columns specified */
+  gap: 1rem;
+}
+
+.announcement-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 5px;
+  /* BUG: No shadow */
+  background-color: white;
+}
+
+.announcement-card h3 {
+  margin: 0 0 0.5rem 0;
+  /* BUG: Color not specified */
+}
+
+.announcement-card p {
+  color: #666;
+  /* BUG: No line-height for readability */
+}
+
+.announcement-card span {
+  font-size: 0.8rem;
+  color: #999;
+  /* BUG: Date format not styled */
+}
+
+/* BUG: Features section missing styles */
+.features-grid {
+  display: grid;
+  /* BUG: Missing grid columns */
+  gap: 2rem;
+}
+
+.feature-card {
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid #eee;
+  /* BUG: No hover effect */
+}
+
+/* BUG: Missing mobile responsive styles */
+@media (max-width: 768px) {
+  /* BUG: Media query styles incomplete */
+}

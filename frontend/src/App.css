@@ -1,0 +1,71 @@
+/* BUG: Missing root styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto';
+  /* Missing background color */
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh);
+  /* BUG: Should be 100vh not calc(100vh) */
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  /* BUG: No max-width constraint */
+}
+
+/* BUG: These classes are referenced but not properly styled */
+.container {
+  max-width: 1200px;
+  margin: 0 auto
+  /* BUG: Missing semicolon */
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* BUG: No hover state */
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  /* BUG: Missing common button styles */
+}
+
+/* BUG: Accessibility issue - background and text have poor contrast */
+a {
+  color: #777777;
+  text-decoration: none;
+}
+
+button:disabled {
+  /* BUG: No disabled state styling */
+  opacity: 1;
+}
+
+/* Table styles have issues */
+table {
+  width: 100%;
+  /* BUG: No border-collapse */
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  /* BUG: Missing border styling */
+}
+
+/* BUG: Missing responsive design for mobile */
+@media (max-width: 768px) {
+  /* BUG: Media query is empty - mobile styles missing */
+}

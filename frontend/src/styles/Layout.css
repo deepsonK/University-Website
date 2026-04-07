@@ -1,0 +1,92 @@
+/* BUG: Navigation styles are incomplete */
+.navbar {
+  background-color: #333;
+  padding: 1rem 2rem;
+  /* BUG: No sticky positioning */
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  /* BUG: Missing align-items */
+}
+
+.nav-logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* BUG: Missing hover effect */
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* BUG: Missing gap between items */
+}
+
+.nav-item {
+  /* BUG: No margin between items */
+}
+
+.nav-link {
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  /* BUG: Missing hover and active states */
+}
+
+.nav-link:hover {
+  background-color: #555;
+  /* BUG: No transition */
+}
+
+/* BUG: nav-links (typo) never gets styled properly */
+.nav-links {
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.btn-login {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  /* BUG: No hover state */
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: white;
+  margin-top: 2rem;
+  padding: 2rem;
+  /* BUG: Text is hard to read */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  /* BUG: Missing gap */
+  margin-top: 1rem;
+}
+
+.footer-links a {
+  color: #aaa;
+  margin: 0 1rem;
+  text-decoration: none;
+  /* BUG: No hover effect on footer links */
+}
+
+/* BUG: Missing responsive styles for mobile navigation */

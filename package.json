@@ -1,0 +1,15 @@
+{
+  "name": "university-website",
+  "version": "1.0.0",
+  "description": "Full-stack university website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["university", "website", "education"],
+  "author": "",
+  "license": "MIT"
+}

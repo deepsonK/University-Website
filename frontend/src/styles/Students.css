@@ -1,0 +1,104 @@
+/* BUG: Students page styling incomplete */
+.students-page {
+  /* BUG: Missing padding, margin, and max-width */
+}
+
+.students-page h1 {
+  /* BUG: No proper heading styling */
+  font-size: 2rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  /* BUG: No flex-wrap for mobile */
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  /* BUG: No focus state */
+}
+
+.search-input:focus {
+  outline: none;
+  /* BUG: No focus styling */
+}
+
+.filter-select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  /* BUG: No background color */
+}
+
+.students-table {
+  overflow-x: auto;
+  /* BUG: No shadow or border */
+}
+
+.students-table table {
+  width: 100%;
+  border-collapse: collapse;
+  /* BUG: No striping for rows */
+}
+
+.students-table thead {
+  background-color: #f5f5f5;
+  /* BUG: Missing text styling */
+}
+
+.students-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #ddd;
+}
+
+.students-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* BUG: Alternating row colors missing */
+.students-table tbody tr:nth-child(even) {
+  /* BUG: Background color not set */
+}
+
+.students-table tbody tr:hover {
+  background-color: #f9f9f9;
+  /* BUG: No transition */
+}
+
+.students-table button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  cursor: pointer;
+  /* BUG: No hover state */
+}
+
+.no-students {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+  /* BUG: Font size not specified */
+}
+
+.btn-add-student {
+  background-color: #28a745;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 2rem;
+  /* BUG: No hover effect */
+}
+
+/* BUG: Mobile responsive styles missing */
