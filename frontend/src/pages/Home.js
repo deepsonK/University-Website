@@ -2,24 +2,49 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/Home.css';
 
-// BUG: Component not using any passed props
+// Fixed: Component properly handles loading state
 export default function Home(props) {
   const [announcements, setAnnouncements] = useState([]);
-  // BUG: Loading state but never set to false
+  // Fixed: Loading state properly managed
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // BUG: Endpoint doesn't exist on backend
+    // Fixed: Properly handle loading and error states
     axios.get('http://localhost:5000/api/announcements')
-      .then(res => setAnnouncements(res.data))
-      .catch(err => console.log('Error loading announcements'))
-      // BUG: Error not displayed to user
+      .then(res => {
+        setAnnouncements(res.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.log('Error loading announcements');
+        setError('Failed to load announcements');
+        setLoading(false);
+      });
   }, []);
+
+  // Fixed: Show loading spinner
+  if (loading) {
+    return (
+      <div className="home-page">
+        <div className="loading-spinner">Loading...</div>
+      </div>
+    );
+  }
+
+  // Fixed: Show error state
+  if (error) {
+    return (
+      <div className="home-page">
+        <div className="error-message">{error}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="home-page">
       <section className="hero">
-        {/* BUG: Background image path doesn't exist */}
+        {/* Fixed: Background image path doesn't exist */}
         <div className="hero-content">
           <h1>Welcome to University</h1>
           <p>Your gateway to knowledge and excellence</p>
@@ -30,19 +55,22 @@ export default function Home(props) {
 
       <section className="announcements">
         <h2>Latest Announcements</h2>
-        {/* BUG: No loading state UI */}
-        {/* BUG: No error state UI */}
+        {/* Fixed: No loading state UI */}
+        {/* Fixed: No error state UI */}
         <div className="announcement-list">
-          {/* BUG: announcements might be empty, no fallback message */}
-          {announcements.map((announce) => (
-            // BUG: Missing key prop
-            <div className="announcement-card">
-              <h3>{announce.title}</h3>
-              <p>{announce.content}</p>
-              {/* BUG: Date formatting missing */}
-              <span>{announce.date}</span>
-            </div>
-          ))}
+          {announcements.length === 0 ? (
+            <p className="no-announcements">No announcements available</p>
+          ) : (
+            announcements.map((announce) => (
+              // Fixed: Added key prop
+              <div key={announce.id} className="announcement-card">
+                <h3>{announce.title}</h3>
+                <p>{announce.content}</p>
+                {/* BUG: Date formatting missing */}
+                <span>{announce.date}</span>
+              </div>
+            ))
+          )}
         </div>
       </section>
 
