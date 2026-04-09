@@ -15,8 +15,8 @@ export function Navigation() {
             <Link to="/" className="nav-link">Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/students" className="nav-links">Students</Link>
-            {/* BUG: Class name mismatch - nav-links instead of nav-link */}
+            <Link to="/students" className="nav-link">Students</Link>
+            {/* BUG: Class name mismatch - nav-link instead of nav-link */}
           </li>
           <li className="nav-item">
             <Link to="/courses" className="nav-link">Courses</Link>

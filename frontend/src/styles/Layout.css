@@ -44,11 +44,6 @@
   /* BUG: No transition */
 }
 
-/* BUG: nav-links (typo) never gets styled properly */
-.nav-links {
-  color: white;
-  padding: 0.5rem 1rem;
-}
 
 .btn-login {
   background-color: #007bff;
