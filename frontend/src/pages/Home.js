@@ -36,7 +36,7 @@ export default function Home(props) {
           {/* BUG: announcements might be empty, no fallback message */}
           {announcements.map((announce) => (
             // BUG: Missing key prop
-            <div className="announcement-card">
+            <div key={announce.id} className="announcement-card">
               <h3>{announce.title}</h3>
               <p>{announce.content}</p>
               {/* BUG: Date formatting missing */}

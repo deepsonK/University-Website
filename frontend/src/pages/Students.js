@@ -65,7 +65,7 @@ export default function StudentsPage() {
         <div className="students-table">
           <table>
             <thead>
-              <tr>
+              <tr key={student.id}>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -77,8 +77,8 @@ export default function StudentsPage() {
             </thead>
             <tbody>
               {students.map((student) => (
-                // BUG: Missing key prop
-                <tr>
+                // Using student.id as key
+                <tr key={student.id}>
                   <td>{student.id}</td>
                   <td>{student.firstName} {student.lastName}</td>
                   <td>{student.email}</td>
