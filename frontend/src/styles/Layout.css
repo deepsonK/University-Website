@@ -90,3 +90,25 @@
 }
 
 /* BUG: Missing responsive styles for mobile navigation */
+
+/* Focus states for accessibility */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Remove default outline and add custom */
+button:focus-visible {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
