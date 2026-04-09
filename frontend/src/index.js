@@ -1,15 +1,11 @@
 import React from 'react';
-// BUG: Using old ReactDOM import
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 
-// BUG: render is deprecated, should use createRoot
-ReactDOM.render(
+// React 18 way - using createRoot
+const root = createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
-
-// BUG: No error boundary
-// BUG: No logging setup
