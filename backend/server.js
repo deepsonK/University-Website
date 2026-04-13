@@ -16,7 +16,7 @@ app.use(express.json());
 
 // Routes
 // BUG: Missing implementation - endpoint doesn't exist
-app.get('/api/students', (req, res) = {
+app.get('/api/students', (req, res) => {
   // BUG: Syntax error - missing > in arrow function
   res.json({ message: 'Get all students' })
 });
@@ -28,7 +28,7 @@ app.get('/api/courses', (req, res) => {
 });
 
 // BUG: Missing route methods
-app.get('/api/professors' (req, res) => {
+app.get('/api/professors', (req, res) => {
   res.json({ professors: [] })
 });
 

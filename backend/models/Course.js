@@ -11,7 +11,7 @@ const courseSchema = new mongoose.Schema({
   },
   courseName: {
     type: String,
-    required true // BUG: Missing colon (:)
+    required :true // BUG: Missing colon (:)
   },
   credits: {
     type: Number,
