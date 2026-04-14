@@ -34,9 +34,9 @@ export default function Home(props) {
         {/* BUG: No error state UI */}
         <div className="announcement-list">
           {/* BUG: announcements might be empty, no fallback message */}
-          {announcements.map((announce) => (
+          {announcements?.map((announce,index) => (
             // BUG: Missing key prop
-            <div className="announcement-card">
+            <div className="announcement-card" key={index}>
               <h3>{announce.title}</h3>
               <p>{announce.content}</p>
               {/* BUG: Date formatting missing */}
