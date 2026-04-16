@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 require('dotenv').config();
-
+const jwt = require('jsonwebtoken');
+const bcryptjs = require('bcryptjs');
+const Student = require('./models/Student');
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({}));
@@ -36,9 +38,28 @@ app.post('/api/auth/register', (req, res) => {
   res.status(500).send('Not implemented');
 });
 
-// BUG: Incorrect method - should probably be POST
-app.get('/api/auth/login', (req, res) => {
-  res.json({ token: null });
+app.post('/api/auth/login', async(req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+    const student = await Student.findOne({ email });
+    if (!student) {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
+    const isPasswordValid = await bcryptjs.compare(password, student.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
+    const token = jwt.sign({ id: student._id, email: student.email },
+    process.env.JWT_SECRET || 'your_secret_key', 
+    { expiresIn: '7d' });
+    res.json({ token, student: { id: student._id, email: student.email, firstName: student.firstName, lastName: student.lastName } });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal server error', error: error.message });
+  }
+
 });
 
 // BUG: No error handling middleware
