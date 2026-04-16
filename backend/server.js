@@ -33,9 +33,56 @@ app.get('/api/professors', (req, res) => {
 });
 
 // BUG: Completely missing implementation
-app.post('/api/auth/register', (req, res) => {
-  // TODO: Implement registration endpoint
-  res.status(500).send('Not implemented');
+app.post('/api/auth/register', async(req, res) => {
+  try {
+    const { firstName, lastName, email, password } = req.body;
+    //TODO: Add validation for input fields
+    if (!firstName || !lastName || !email || !password) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+//validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: 'Invalid email format' });
+    }
+
+    //validate password strength
+    if (password.length < 6) {
+      return res.status(400).json({ message: 'Password must be at least 6 characters' });
+    }
+
+    //check if user already exists by email
+    const existingStudent = await Student.findOne({ email });
+    if (existingStudent) {
+      return res.status(409).json({ message: 'Email already registered andin use' });
+    }
+
+    //hash password
+    const hashedPassword = await bcryptjs.hash(password, 10);
+
+    //create new student
+    const newStudent = new Student({
+      firstName,
+      lastName,
+      email,
+      password: hashedPassword,
+    });
+
+    //save student to database
+    await newStudent.save();
+
+    //generate JWT token
+    const token = jwt.sign({ id: newStudent._id, email: newStudent.email },
+      process.env.JWT_SECRET || 'your_secret_key',
+      { expiresIn: '7d' }
+    );
+
+    //return token and student info
+    res.status(201).json({ message:'Student registered successfully', token, student: { id: newStudent._id, email: newStudent.email, firstName: newStudent.firstName, lastName: newStudent.lastName } });
+
+  } catch (error) {
+    res.status(500).json({ message: 'Internal server error', error: error.message });
+  }
 });
 
 app.post('/api/auth/login', async(req, res) => {
