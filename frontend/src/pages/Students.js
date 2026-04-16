@@ -77,8 +77,7 @@ export default function StudentsPage() {
             </thead>
             <tbody>
               {students.map((student) => (
-                // BUG: Missing key prop
-                <tr>
+                <tr key={student.id}>
                   <td>{student.id}</td>
                   <td>{student.firstName} {student.lastName}</td>
                   <td>{student.email}</td>
