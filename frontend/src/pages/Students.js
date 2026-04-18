@@ -19,7 +19,8 @@ export default function StudentsPage() {
       // BUG: Hardcoded URL and no query parameters for filter
       const response = await axios.get('http://localhost:5000/api/students');
       setStudents(response.data);
-      // BUG: setLoading(false) is missing
+      // Fixed: setLoading(false) is missing
+      setLoading(false);
     } catch (error) {
       console.error(error);
       // BUG: No error state management
@@ -37,20 +38,31 @@ export default function StudentsPage() {
     console.log('Update:', id);
   };
 
+  const filterData = students.filter((student) => {
+    const fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
+    const matchesSearch =
+      fullName.includes(searchTerm.toLowerCase()) ||
+      student.email.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter =
+      filter === 'all' || student.status === filter;
+    return matchesSearch && matchesFilter;
+  })
+
   return (
     <div className="students-page">
       <h1>Students Directory</h1>
-      
+
       <div className="controls">
-        {/* BUG: Search input is missing onChange handler */}
-        <input 
-          type="text" 
+        {/* Fixed: Search input is missing onChange handler */}
+        <input
+          type="text"
           placeholder="Search students..."
           className="search-input"
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        
-        {/* BUG: Filter dropdown onChange is missing */}
-        <select className="filter-select">
+
+        {/* Fixed: Filter dropdown onChange is missing */}
+        <select onChange={(e) => setFilter(e.target.value)} className="filter-select">
           <option value="all">All Students</option>
           <option value="active">Active</option>
           <option value="graduated">Graduated</option>
@@ -76,7 +88,8 @@ export default function StudentsPage() {
               </tr>
             </thead>
             <tbody>
-              {students.map((student) => (
+              {filterData.map((student) => (
+                // Fixed: Missing key prop
                 <tr key={student.id}>
                   <td>{student.id}</td>
                   <td>{student.firstName} {student.lastName}</td>
