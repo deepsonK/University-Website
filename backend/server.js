@@ -1,7 +1,7 @@
 // BUG: Missing import for express
 const app = require('express')();
 // BUG: Express is not properly destructured
-const cors = require('cor'); // BUG: Typo in module name
+const cors = require('cors'); // BUG: Typo in module name
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
