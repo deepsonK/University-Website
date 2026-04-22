@@ -48,8 +48,7 @@ export default function CoursesPage() {
           // BUG: No CSS for course-grid
           <div className="course-grid">
             {courses.map((course) => (
-              // BUG: Missing key prop
-              <div className="course-card">
+              <div className="course-card" key={course.id}>
                 <h3>{course.courseName}</h3>
                 <p className="course-code"><strong>Code:</strong> {course.courseCode}</p>
                 <p className="course-credits"><strong>Credits:</strong> {course.credits}</p>
