@@ -32,13 +32,42 @@ main {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  /* BUG: No hover state */
+  /* BUG Fixed: Added Smooth Transition*/
+  transition: all 0.2s ease-in-out;
+}
+/*Added: Hover pseudo-class*/
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
   background-color: #6c757d;
   color: white;
-  /* BUG: Missing common button styles */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* BUG Fixed: Added Smooth Transition*/
+  transition: all 0.2s ease-in-out;
+}
+
+/*Added: Hover pseudo-class*/
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+/* Add :active pseudo-class */
+.btn-secondary:active {
+  transform: translateY(1px);
+}
+
+/* Add :disabled pseudo-class */
+button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 /* BUG: Accessibility issue - background and text have poor contrast */
@@ -68,4 +97,16 @@ th, td {
 /* BUG: Missing responsive design for mobile */
 @media (max-width: 768px) {
   /* BUG: Media query is empty - mobile styles missing */
+}
+
+/* Apply hover, active, and transition to ALL other buttons globally */
+button {
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  filter: brightness(0.9);
+  transform: translateY(-2px);
+}
+button:active {
+  transform: translateY(1px);
 }
