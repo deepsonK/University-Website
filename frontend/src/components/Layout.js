@@ -1,30 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/Layout.css';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import "../styles/Layout.css";
 
-// BUG: Missing import for CSS styles
 export function Navigation() {
-  // BUG: No active state for current page
+  const location = useLocation();
+
   return (
     <nav className="navbar">
       <div className="nav-container">
-        {/* BUG: Logo link is broken */}
-        <Link to="/" className="nav-logo">UniHub</Link>
+        <Link to="/" className="nav-logo">
+          UniHub
+        </Link>
         <ul className="nav-menu">
           <li className="nav-item">
-            <Link to="/" className="nav-link">Home</Link>
+            <Link
+              to="/"
+              className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+            >
+              Home
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to="/students" className="nav-links">Students</Link>
-            {/* BUG: Class name mismatch - nav-links instead of nav-link */}
+            <Link
+              to="/students"
+              className={`nav-link ${location.pathname === "/students" ? "active" : ""}`}
+            >
+              Students
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to="/courses" className="nav-link">Courses</Link>
+            <Link
+              to="/courses"
+              className={`nav-link ${location.pathname === "/courses" ? "active" : ""}`}
+            >
+              Courses
+            </Link>
           </li>
-          {/* BUG: Missing admin link */}
           <li className="nav-item">
-            {/* BUG: Login button is not functional */}
-            <button className="btn-login">Login</button>
+            <Link
+              to="/admin"
+              className={`nav-link ${location.pathname === "/admin" ? "active" : ""}`}
+            >
+              Admin
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/login">
+              <button className="btn-login">Login</button>
+            </Link>
           </li>
         </ul>
       </div>
@@ -33,16 +56,16 @@ export function Navigation() {
 }
 
 export function Footer() {
-  // BUG: Footer content is incomplete
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="footer-container">
-        <p>{/* BUG: Missing copyright year calculation */}</p>
+        <p>&copy; {currentYear} UniHub. All rights reserved.</p>
         <div className="footer-links">
-          {/* BUG: Links don't go anywhere */}
-          <a href="">About</a>
-          <a href="">Contact</a>
-          <a href="">Privacy</a>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/privacy">Privacy</Link>
         </div>
       </div>
     </footer>
