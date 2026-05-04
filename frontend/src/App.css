@@ -1,30 +1,31 @@
-/* BUG: Missing root styles */
+/* Root styles */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto';
-  /* Missing background color */
+  background-color: #f5f5f5;
 }
 
+/* App layout */
 .app {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh);
-  /* BUG: Should be 100vh not calc(100vh) */
+  min-height: 100vh;
 }
 
 main {
   flex: 1;
   padding: 2rem;
-  /* BUG: No max-width constraint */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* BUG: These classes are referenced but not properly styled */
+/* Container */
 .container {
   max-width: 1200px;
-  margin: 0 auto
-  /* BUG: Missing semicolon */
+  margin: 0 auto;
 }
 
+/* Buttons */
 .btn-primary {
   background-color: #007bff;
   color: white;
@@ -32,63 +33,109 @@ main {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  /* BUG: No hover state */
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
   background-color: #6c757d;
   color: white;
-  /* BUG: Missing common button styles */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-/* BUG: Accessibility issue - background and text have poor contrast */
-a {
-  color: #777777;
-  text-decoration: none;
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: translateY(1px);
+}
+
+/* Global button interactions */
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  filter: brightness(0.9);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(1px);
 }
 
 button:disabled {
-  /* BUG: No disabled state styling */
-  opacity: 1;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
-/* Table styles have issues */
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Tables */
 table {
   width: 100%;
-  /* BUG: No border-collapse */
+  border-collapse: collapse;
   border: 1px solid #ddd;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   text-align: left;
-  /* BUG: Missing border styling */
+  border: 1px solid #ddd;
 }
 
-/* BUG: Missing responsive design for mobile */
-@media (max-width: 768px) {
-  /* BUG: Media query is empty - mobile styles missing */
-}
-
+/* Loading & Error UI */
 .loading {
   font-size: 1.5rem;
   color: #555;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(90vh);  
-  width: 90%;
-  /* BUG: No background color */
+  height: 90vh;
+  width: 100%;
+  background-color: #f9f9f9;
 }
 
 .error {
   height: 100vh;
   width: 100%;
-  color: black;
+  color: #000;
   font-size: 1.5rem;
   font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* BUG: No background color */
+  background-color: #ffe6e6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
 }
