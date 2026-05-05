@@ -1,30 +1,31 @@
-/* BUG: Missing root styles */
+/* Root styles */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto';
-  /* Missing background color */
+  background-color: #f5f5f5;
 }
 
+/* App layout */
 .app {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh);
-  /* BUG: Should be 100vh not calc(100vh) */
+  min-height: 100vh;
 }
 
 main {
   flex: 1;
   padding: 2rem;
-  /* BUG: No max-width constraint */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* BUG: These classes are referenced but not properly styled */
+/* Container */
 .container {
   max-width: 1200px;
-  margin: 0 auto
-  /* BUG: Missing semicolon */
+  margin: 0 auto;
 }
 
+/* Buttons */
 .btn-primary {
   background-color: #007bff;
   color: white;
@@ -32,10 +33,9 @@ main {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  /* BUG Fixed: Added Smooth Transition*/
   transition: all 0.2s ease-in-out;
 }
-/*Added: Hover pseudo-class*/
+
 .btn-primary:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
@@ -48,21 +48,32 @@ main {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  /* BUG Fixed: Added Smooth Transition*/
   transition: all 0.2s ease-in-out;
 }
 
-/*Added: Hover pseudo-class*/
 .btn-secondary:hover {
   background-color: #5a6268;
   transform: translateY(-2px);
 }
-/* Add :active pseudo-class */
+
 .btn-secondary:active {
   transform: translateY(1px);
 }
 
-/* Add :disabled pseudo-class */
+/* Global button interactions */
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  filter: brightness(0.9);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
 button:disabled {
   background-color: #cccccc;
   color: #666666;
@@ -70,43 +81,61 @@ button:disabled {
   opacity: 0.7;
 }
 
-/* BUG: Accessibility issue - background and text have poor contrast */
+/* Links */
 a {
-  color: #777777;
+  color: #007bff;
   text-decoration: none;
 }
 
-button:disabled {
-  /* BUG: No disabled state styling */
-  opacity: 1;
-}
-
-/* Table styles have issues */
+/* Tables */
 table {
   width: 100%;
-  /* BUG: No border-collapse */
+  border-collapse: collapse;
   border: 1px solid #ddd;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   text-align: left;
-  /* BUG: Missing border styling */
+  border: 1px solid #ddd;
 }
 
-/* BUG: Missing responsive design for mobile */
+/* Loading & Error UI */
+.loading {
+  font-size: 1.5rem;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+  background-color: #f9f9f9;
+}
+
+.error {
+  height: 100vh;
+  width: 100%;
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffe6e6;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  /* BUG: Media query is empty - mobile styles missing */
-}
+  main {
+    padding: 1rem;
+  }
 
-/* Apply hover, active, and transition to ALL other buttons globally */
-button {
-  transition: all 0.2s ease-in-out;
-}
-button:hover {
-  filter: brightness(0.9);
-  transform: translateY(-2px);
-}
-button:active {
-  transform: translateY(1px);
+  .container {
+    padding: 0 1rem;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
 }
