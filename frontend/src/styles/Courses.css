@@ -153,11 +153,42 @@ button:disabled {
 
 /* BUG: Responsive grid not implemented */
 @media (max-width: 768px) {
+  .courses-page {
+    padding: 1rem;
+  }
+
+  .courses-page h1 {
+    font-size: 1.5rem;
+  }
+
   .course-grid {
     grid-template-columns: 1fr;
   }
+
+  .course-card {
+    padding: 1rem;
+  }
+
+  .course-actions {
+    flex-direction: column;
+  }
+
   .course-actions button {
     flex: auto;
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-page {
+    padding: 0.75rem;
+  }
+
+  .courses-page h1 {
+    font-size: 1.25rem;
+  }
+
+  .course-card h3 {
+    font-size: 1.1rem;
   }
 }

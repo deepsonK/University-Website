@@ -139,16 +139,68 @@
 
 /* BUG: Missing responsive styles for mobile navigation */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .nav-logo {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
   .nav-menu {
     flex-direction: column;
     gap: 0.25rem;
+    width: 100%;
   }
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
+
+  .nav-item {
+    width: 100%;
   }
+
+  .nav-link {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .btn-login {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
   .footer-links {
     flex-direction: column;
     align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-links a {
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
   }
 }
