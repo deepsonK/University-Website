@@ -64,36 +64,37 @@
 .students-table table {
   width: 100%;
   border-collapse: collapse;
-  /* BUG: No striping for rows */
 }
 
 .students-table thead {
-  background-color: #f5f5f5;
-  /* BUG: Missing text styling */
+  background-color: #333;
+  color: white;
 }
 
 .students-table th {
   padding: 1rem;
   text-align: left;
   font-weight: 600;
-  border-bottom: 2px solid #ddd;
-  color: #333;
+  border: 1px solid #ddd;
+  color: white;
 }
 
 .students-table td {
   padding: 1rem;
-  border-bottom: 1px solid #eee;
+  border: 1px solid #eee;
 }
 
-/* BUG: Alternating row colors missing */
+/* Alternating row striping for readability */
 .students-table tbody tr:nth-child(even) {
-  /* BUG: Background color not set */
-  background-color: #fafafa;
+  background-color: #f5f7fa;
+}
+
+.students-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
 }
 
 .students-table tbody tr:hover {
-  background-color: #f9f9f9;
-  /* BUG: No transition */
+  background-color: #e8f0fe;
   transition: background-color 0.2s ease;
 }
 
