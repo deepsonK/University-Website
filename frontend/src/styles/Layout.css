@@ -69,11 +69,14 @@
 }
 
 .nav-link.active {
-  background-color: #555;
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
 }
 
-  color: white;
-  padding: 0.5rem 1rem;
+.nav-link.active:hover {
+  background-color: #0056b3;
 }
 
 .btn-login {
