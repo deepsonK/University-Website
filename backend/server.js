@@ -43,7 +43,7 @@ app.get('/api/courses', (req, res) => {
 // BUG: Missing route methods
 app.get('/api/professors', (req, res) => {
   res.json({ professors: [] });
-});
+}); 
 
 // BUG: Completely missing implementation
 app.post('/api/auth/register', async(req, res) => {
